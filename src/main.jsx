@@ -9,13 +9,5 @@ render(
 )
 
 if (module && module.hot) {
-    module.hot.accept('./view/app.jsx', () => {
-        const App = require('./view/app.jsx').default
-        render(
-            <AppContainer>
-                <App />
-            </AppContainer>,
-            document.getElementById('app')
-        )
-    })
+    module.hot.accept()
 }

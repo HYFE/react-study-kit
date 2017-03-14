@@ -38,7 +38,11 @@ loaders.push({
     ]
 })
 
-config.entry.unshift('react-hot-loader/patch')
+config.entry = [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:' + PORT,
+    'webpack/hot/only-dev-server',
+].concat(config.entry)
 
 module.exports = merge(config, {
     module: {
@@ -64,6 +68,7 @@ module.exports = merge(config, {
             }
         }),
         new webpack.NoErrorsPlugin(),
+        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html'
